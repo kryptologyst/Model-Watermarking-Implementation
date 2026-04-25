@@ -1,0 +1,36 @@
+# Core dependencies
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+scipy>=1.7.0
+tqdm>=4.62.0
+
+# Deep learning
+torch>=1.12.0
+torchvision>=0.13.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Configuration
+pyyaml>=6.0
+omegaconf>=2.2.0
+
+# Demo interface
+streamlit>=1.25.0
+
+# Development and testing
+pytest>=7.0.0
+black>=22.0.0
+ruff>=0.1.0
+mypy>=0.991
+
+# Optional: ML tracking
+# mlflow>=1.28.0
+# wandb>=0.13.0
+
+# Optional: Privacy and security
+# opacus>=1.3.0
+# diffprivlib>=0.6.0

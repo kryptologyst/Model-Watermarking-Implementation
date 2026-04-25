@@ -1,0 +1,140 @@
+# Example configuration for model watermarking experiments
+# This file demonstrates the structure and parameters for watermarking experiments
+
+experiment_name: "watermark_comparison_example"
+output_dir: "results"
+save_models: true
+save_results: true
+generate_plots: true
+
+# Dataset configuration
+dataset:
+  n_samples: 2000
+  n_features: 10
+  n_classes: 2
+  n_redundant: 0
+  n_informative: 10
+  random_state: 42
+  test_size: 0.3
+
+# Watermarking configurations
+watermark_configs:
+  # Logistic Regression with Backdoor Watermarking
+  - name: "logistic_backdoor"
+    trigger_pattern: [0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123]
+    trigger_label: 1
+    watermark_samples: 50
+    model_type: "logistic"
+    device: "cpu"
+    input_dim: 10
+    hidden_dim: 64
+    epochs: 100
+    learning_rate: 0.001
+    batch_size: 32
+    test_size: 0.3
+    random_state: 42
+    robustness_threshold: 0.8
+    blackbox_queries: 1000
+    verification_confidence: 0.95
+    n_samples: 2000
+    n_features: 10
+    n_classes: 2
+
+  # Neural Network with Backdoor Watermarking
+  - name: "neural_backdoor"
+    trigger_pattern: [0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123]
+    trigger_label: 1
+    watermark_samples: 50
+    model_type: "neural"
+    device: "cpu"
+    input_dim: 10
+    hidden_dim: 64
+    epochs: 100
+    learning_rate: 0.001
+    batch_size: 32
+    test_size: 0.3
+    random_state: 42
+    robustness_threshold: 0.8
+    blackbox_queries: 1000
+    verification_confidence: 0.95
+    n_samples: 2000
+    n_features: 10
+    n_classes: 2
+
+  # Random Forest with Backdoor Watermarking
+  - name: "random_forest_backdoor"
+    trigger_pattern: [0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123, 0.123]
+    trigger_label: 1
+    watermark_samples: 50
+    model_type: "random_forest"
+    device: "cpu"
+    input_dim: 10
+    hidden_dim: 64
+    epochs: 100
+    learning_rate: 0.001
+    batch_size: 32
+    test_size: 0.3
+    random_state: 42
+    robustness_threshold: 0.8
+    blackbox_queries: 1000
+    verification_confidence: 0.95
+    n_samples: 2000
+    n_features: 10
+    n_classes: 2
+
+# Evaluation configuration
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1"
+    - "watermark_detection_rate"
+    - "stealth_score"
+    - "robustness_score"
+  
+  robustness_tests:
+    noise_levels: [0.01, 0.05, 0.1, 0.2, 0.5]
+    perturbation_types: ["gaussian", "uniform", "salt_pepper"]
+    compression_ratios: [0.1, 0.2, 0.5, 0.8]
+    attack_types: ["gradient_attack", "feature_removal", "model_stealing"]
+    num_tests: 100
+
+# Visualization configuration
+visualization:
+  plot_types:
+    - "confusion_matrix"
+    - "roc_curve"
+    - "pr_curve"
+    - "feature_importance"
+    - "watermark_effectiveness"
+    - "robustness_comparison"
+  
+  plot_settings:
+    figure_size: [12, 8]
+    dpi: 300
+    style: "seaborn"
+    color_palette: "Set2"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/watermarking.log"
+  console: true
+
+# Security and privacy settings
+security:
+  remove_pii: true
+  hash_sensitive_data: true
+  audit_logging: true
+  input_validation: true
+  schema_validation: true
+
+# Performance settings
+performance:
+  use_gpu: false
+  num_workers: 4
+  batch_size: 32
+  cache_results: true
+  parallel_evaluation: true
